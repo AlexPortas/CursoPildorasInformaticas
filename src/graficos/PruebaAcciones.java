@@ -1,7 +1,6 @@
 package graficos;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.*;
 import javax.swing.*;
 import static javax.swing.Action.NAME;
@@ -21,8 +20,7 @@ class MarcoAccion extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(600, 300, 500, 350);
         setTitle("Respondiendo");
-        LaminaAccion lamina = new LaminaAccion();
-        add(lamina);
+        add(new LaminaAccion());
    }
 }
 
@@ -34,14 +32,27 @@ class LaminaAccion extends JPanel{
         add(new JButton(accionAmarillo));
         add(new JButton(accionAzul));
         add(new JButton(accionRojo));
+        
         /*JButton botonAmarillo=new JButton("Amarillo");
         JButton botonAzul=new JButton("Azul");
         JButton botonRojo=new JButton("Rojo");
         add(botonAmarillo);
         add(botonAzul);
         add(botonRojo);*/
+        
+        InputMap mapaEntrada = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        KeyStroke teclaAmarillo = KeyStroke.getKeyStroke("ctrl A");
+        KeyStroke teclaAzul = KeyStroke.getKeyStroke("ctrl B");
+        KeyStroke teclaRojo = KeyStroke.getKeyStroke("ctrl R");
+        mapaEntrada.put(teclaAmarillo, "fondo_amarillo");
+        mapaEntrada.put(teclaAzul, "fondo_azul");
+        mapaEntrada.put(teclaRojo, "fondo_rojo");
+        ActionMap mapaAccion = getActionMap();
+        mapaAccion.put("fondo_amarillo", accionAmarillo);
+        mapaAccion.put("fondo_azul", accionAzul);
+        mapaAccion.put("fondo_rojo", accionRojo);
     }
- 
+
     private class AccionColor extends AbstractAction{
 
         public void actionPerformed(ActionEvent e) {

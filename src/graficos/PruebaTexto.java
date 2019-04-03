@@ -17,10 +17,10 @@ class MarcoTexto extends JFrame{
     public MarcoTexto() {
         setTitle("Prueba texto");
         setBounds(500, 300, 450, 300);
-        setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         LaminaTexto lamina= new LaminaTexto();
         add(lamina);
+        setVisible(true);
     }
 }
 

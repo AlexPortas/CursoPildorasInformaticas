@@ -1,54 +1,47 @@
 package graficos;
 
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class PruebaComboBox {
+public class PruebaMenu {
     public static void main(String[]args){
-        MarcoComboBox marco= new MarcoComboBox();
+        MarcoMenu marco= new MarcoMenu();
     }
 }
 
-class MarcoComboBox extends JFrame{
-    public MarcoComboBox() {
-        setTitle("Prueba ComboBox");
+class MarcoMenu extends JFrame{
+    public MarcoMenu() {
+        setTitle("Prueba menu");
         setBounds(500, 300, 450, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        add(new LaminaComboBox());
+        add(new LaminaMenu());
         
         setVisible(true);
     }
 }
 
-class LaminaComboBox extends JPanel {
-    private JLabel texto;
-    private JComboBox combo;
-
-    public LaminaComboBox() {
-        setLayout(new BorderLayout());
-        texto = new JLabel("En un lugar de la Mancha...");
-        texto.setFont(new Font("Serif", Font.PLAIN, 18));
-        add(texto, BorderLayout.CENTER);
-        JPanel lamina = new JPanel();
-        combo = new JComboBox();
-        combo.addItem("Serif");
-        combo.addItem("SansSerif");
-        combo.addItem("Monospaced");
-        combo.addItem("Dialog");
-        combo.addActionListener(new EventoCombo());
-        lamina.add(combo);
-        add(lamina, BorderLayout.NORTH);
-    }
-    private class EventoCombo implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            texto.setFont(new Font((String) combo.getSelectedItem(), Font.PLAIN, 18));
-        }      
+class LaminaMenu extends JPanel {
+    public LaminaMenu() {
+        JMenuBar barra = new JMenuBar();
+        JMenu archivo = new JMenu("Archivo");
+        JMenu edicion = new JMenu("Edición");
+        JMenu tools = new JMenu("Herramientas");
+        JMenuItem guardar = new JMenuItem("Guardar");
+        JMenuItem guardarcomo = new JMenuItem("Guardar como..");
+        JMenuItem cortar = new JMenuItem("Cortar");
+        JMenuItem copiar = new JMenuItem("Copiar");
+        JMenuItem pegar = new JMenuItem("Pegar");
+        JMenuItem preferencias = new JMenuItem("Preferencias");
+        archivo.add(guardar);
+        archivo.add(guardarcomo);
+        edicion.add(cortar);
+        edicion.add(copiar);
+        edicion.add(pegar);
+        tools.add(preferencias);
+        barra.add(archivo);
+        barra.add(edicion);
+        barra.add(tools);
+        add(barra);
     }
 }
 

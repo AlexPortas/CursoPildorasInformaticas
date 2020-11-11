@@ -34,14 +34,14 @@ class LaminaProText2 extends JPanel {
         fuente = new JMenu("Fuente");
         estilo = new JMenu("Estilo");
         tamanho = new JMenu("Tamaño");
-        configurarMenu("Arial", "fuente", "Arial", 9, 10);
-        configurarMenu("Courier", "fuente", "Courier", 9, 10);
-        configurarMenu("Verdana", "fuente", "Verdana", 9, 10);
-        configurarMenu("Negrita", "estilo", "", Font.BOLD, 1);
-        configurarMenu("Cursiva", "estilo", "", Font.ITALIC, 1);
-        configurarMenu("12", "tamanho", "", 1, 12);
-        configurarMenu("24", "tamanho", "", 1, 24);
-        configurarMenu("36", "tamanho", "", 1, 36);
+        configurarMenu("Arial", "fuente", "Arial", 9, 10, "");
+        configurarMenu("Courier", "fuente", "Courier", 9, 10, "");
+        configurarMenu("Verdana", "fuente", "Verdana", 9, 10, "");
+        configurarMenu("Negrita", "estilo", "", Font.BOLD, 1, "build/classes/graficos/img/cortar.png");
+        configurarMenu("Cursiva", "estilo", "", Font.ITALIC, 1, "build/classes/graficos/img/cortar.png");
+        configurarMenu("12", "tamanho", "", 1, 12, "");
+        configurarMenu("24", "tamanho", "", 1, 24, "");
+        configurarMenu("36", "tamanho", "", 1, 36, "");
         barra.add(fuente);
         barra.add(estilo);
         barra.add(tamanho);
@@ -52,8 +52,8 @@ class LaminaProText2 extends JPanel {
         add(textarea, BorderLayout.CENTER);
     }
     
-    public void configurarMenu(String rotulo, String menu, String letra, int par_estilo, int par_tamanho){
-        JMenuItem elem_menu = new JMenuItem(rotulo);
+    public void configurarMenu(String rotulo, String menu, String letra, int par_estilo, int par_tamanho, String rutaImg){
+        JMenuItem elem_menu = new JMenuItem(rotulo, new ImageIcon(rutaImg));
         if (menu=="fuente"){
             fuente.add(elem_menu);
             elem_menu.addActionListener(new StyledEditorKit.FontFamilyAction("cambia tipo letra", letra));

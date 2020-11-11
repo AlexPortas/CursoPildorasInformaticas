@@ -24,9 +24,9 @@ class MarcoProText2 extends JFrame{
 }
 
 class LaminaProText2 extends JPanel {
-    private JTextPane textarea;
+    JTextPane textarea;
     JMenu fuente, estilo, tamanho;
-    private Font letras;
+    Font letras;
     
     public LaminaProText2() {
         setLayout(new BorderLayout());
@@ -34,14 +34,14 @@ class LaminaProText2 extends JPanel {
         fuente = new JMenu("Fuente");
         estilo = new JMenu("Estilo");
         tamanho = new JMenu("Tamaño");
-        configuraMenu("Arial", "fuente", "Arial", 9, 10);
-        configuraMenu("Courier", "fuente", "Courier", 9, 10);
-        configuraMenu("Verdana", "fuente", "Verdana", 9, 10);
-        configuraMenu("Negrita", "estilo", "", Font.BOLD, 1);
-        configuraMenu("Cursiva", "estilo", "", Font.ITALIC, 1);
-        configuraMenu("12", "tamanho", "", 1, 12);
-        configuraMenu("24", "tamanho", "", 1, 24);
-        configuraMenu("36", "tamanho", "", 1, 36);
+        configurarMenu("Arial", "fuente", "Arial", 9, 10);
+        configurarMenu("Courier", "fuente", "Courier", 9, 10);
+        configurarMenu("Verdana", "fuente", "Verdana", 9, 10);
+        configurarMenu("Negrita", "estilo", "", Font.BOLD, 1);
+        configurarMenu("Cursiva", "estilo", "", Font.ITALIC, 1);
+        configurarMenu("12", "tamanho", "", 1, 12);
+        configurarMenu("24", "tamanho", "", 1, 24);
+        configurarMenu("36", "tamanho", "", 1, 36);
         barra.add(fuente);
         barra.add(estilo);
         barra.add(tamanho);
@@ -52,7 +52,7 @@ class LaminaProText2 extends JPanel {
         add(textarea, BorderLayout.CENTER);
     }
     
-    public void configuraMenu(String rotulo, String menu, String letra, int par_estilo, int par_tamanho){
+    public void configurarMenu(String rotulo, String menu, String letra, int par_estilo, int par_tamanho){
         JMenuItem elem_menu = new JMenuItem(rotulo);
         if (menu=="fuente"){
             fuente.add(elem_menu);

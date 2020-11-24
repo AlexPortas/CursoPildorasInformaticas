@@ -37,11 +37,32 @@ class LaminaProText2 extends JPanel {
         configurarMenu("Arial", "fuente", "Arial", 9, 10, "");
         configurarMenu("Courier", "fuente", "Courier", 9, 10, "");
         configurarMenu("Verdana", "fuente", "Verdana", 9, 10, "");
-        configurarMenu("Negrita", "estilo", "", Font.BOLD, 1, "build/classes/graficos/img/cortar.png");
-        configurarMenu("Cursiva", "estilo", "", Font.ITALIC, 1, "build/classes/graficos/img/cortar.png");
-        configurarMenu("12", "tamanho", "", 1, 12, "");
-        configurarMenu("24", "tamanho", "", 1, 24, "");
-        configurarMenu("36", "tamanho", "", 1, 36, "");
+// ***************************************************
+        //configurarMenu("Negrita", "estilo", "", Font.BOLD, 1, "build/classes/graficos/img/cortar.png");
+        //configurarMenu("Cursiva", "estilo", "", Font.ITALIC, 1, "build/classes/graficos/img/cortar.png");
+        JCheckBoxMenuItem neg = new JCheckBoxMenuItem("Negrita", new ImageIcon("build/classes/graficos/img/cortar.png"));
+        neg.addActionListener(new StyledEditorKit.BoldAction());
+        estilo.add(neg);
+        JCheckBoxMenuItem cur = new JCheckBoxMenuItem("Cursiva", new ImageIcon("build/classes/graficos/img/cortar.png"));
+        cur.addActionListener(new StyledEditorKit.ItalicAction());
+        estilo.add(cur);
+//-***************************************************
+        //configurarMenu("12", "tamanho", "", 1, 12, "");
+        //configurarMenu("24", "tamanho", "", 1, 24, "");
+        //configurarMenu("36", "tamanho", "", 1, 36, "");
+        ButtonGroup tamamhos_fuente = new ButtonGroup();
+        JRadioButtonMenuItem peque = new JRadioButtonMenuItem("12");
+        tamamhos_fuente.add(peque);
+        peque.addActionListener(new StyledEditorKit.FontSizeAction("cambia tamaño", 12));
+        JRadioButtonMenuItem mediano = new JRadioButtonMenuItem("24");
+        tamamhos_fuente.add(mediano);
+        mediano.addActionListener(new StyledEditorKit.FontSizeAction("cambia tamaño", 24));
+        JRadioButtonMenuItem grande = new JRadioButtonMenuItem("36");
+        tamamhos_fuente.add(grande);
+        grande.addActionListener(new StyledEditorKit.FontSizeAction("cambia tamaño", 36));
+        tamanho.add(peque);
+        tamanho.add(mediano);
+        tamanho.add(grande);
         barra.add(fuente);
         barra.add(estilo);
         barra.add(tamanho);
@@ -57,7 +78,7 @@ class LaminaProText2 extends JPanel {
         if (menu=="fuente"){
             fuente.add(elem_menu);
             elem_menu.addActionListener(new StyledEditorKit.FontFamilyAction("cambia tipo letra", letra));
-        }else if (menu=="estilo"){
+        }/*else if (menu=="estilo"){
             estilo.add(elem_menu);
             if (par_estilo==1){
                 elem_menu.addActionListener(new StyledEditorKit.BoldAction());
@@ -67,7 +88,7 @@ class LaminaProText2 extends JPanel {
         }else{
             tamanho.add(elem_menu);
             elem_menu.addActionListener(new StyledEditorKit.FontSizeAction("cambia tamaño", par_tamanho));
-        }
+        }*/
     }
 }
 

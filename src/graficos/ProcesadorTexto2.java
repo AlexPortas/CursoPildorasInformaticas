@@ -38,14 +38,14 @@ class LaminaProText2 extends JPanel {
         configurarMenu("Courier", "fuente", "Courier", 9, 10, "");
         configurarMenu("Verdana", "fuente", "Verdana", 9, 10, "");
 // ***************************************************
-        //configurarMenu("Negrita", "estilo", "", Font.BOLD, 1, "build/classes/graficos/img/cortar.png");
-        //configurarMenu("Cursiva", "estilo", "", Font.ITALIC, 1, "build/classes/graficos/img/cortar.png");
-        JCheckBoxMenuItem neg = new JCheckBoxMenuItem("Negrita", new ImageIcon("build/classes/graficos/img/cortar.png"));
+        configurarMenu("Negrita", "estilo", "", Font.BOLD, 1, "build/classes/graficos/img/cortar.png");
+        configurarMenu("Cursiva", "estilo", "", Font.ITALIC, 1, "build/classes/graficos/img/cortar.png");
+        /*JCheckBoxMenuItem neg = new JCheckBoxMenuItem("Negrita", new ImageIcon("build/classes/graficos/img/cortar.png"));
         neg.addActionListener(new StyledEditorKit.BoldAction());
         estilo.add(neg);
         JCheckBoxMenuItem cur = new JCheckBoxMenuItem("Cursiva", new ImageIcon("build/classes/graficos/img/cortar.png"));
         cur.addActionListener(new StyledEditorKit.ItalicAction());
-        estilo.add(cur);
+        estilo.add(cur);*/
 //-***************************************************
         //configurarMenu("12", "tamanho", "", 1, 12, "");
         //configurarMenu("24", "tamanho", "", 1, 24, "");
@@ -71,6 +71,14 @@ class LaminaProText2 extends JPanel {
         add(panelmenu, BorderLayout.NORTH);
         textarea = new JTextPane();
         add(textarea, BorderLayout.CENTER);
+        JPopupMenu menu = new JPopupMenu();
+        JMenuItem opcion1 = new JMenuItem("Negrita");
+        opcion1.addActionListener(new StyledEditorKit.BoldAction());
+        menu.add(opcion1);
+        JMenuItem opcion2 = new JMenuItem("Cursiva");
+        opcion2.addActionListener(new StyledEditorKit.ItalicAction());
+        menu.add(opcion2);
+        textarea.setComponentPopupMenu(menu);
     }
     
     public void configurarMenu(String rotulo, String menu, String letra, int par_estilo, int par_tamanho, String rutaImg){
@@ -78,14 +86,14 @@ class LaminaProText2 extends JPanel {
         if (menu=="fuente"){
             fuente.add(elem_menu);
             elem_menu.addActionListener(new StyledEditorKit.FontFamilyAction("cambia tipo letra", letra));
-        }/*else if (menu=="estilo"){
+        }else if (menu=="estilo"){
             estilo.add(elem_menu);
             if (par_estilo==1){
                 elem_menu.addActionListener(new StyledEditorKit.BoldAction());
             } else if (par_estilo==2){
                 elem_menu.addActionListener(new StyledEditorKit.ItalicAction());
             }
-        }else{
+        }/*else{
             tamanho.add(elem_menu);
             elem_menu.addActionListener(new StyledEditorKit.FontSizeAction("cambia tamaño", par_tamanho));
         }*/

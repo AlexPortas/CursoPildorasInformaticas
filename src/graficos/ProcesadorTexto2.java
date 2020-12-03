@@ -1,7 +1,9 @@
 package graficos;
 
+import com.sun.glass.events.KeyEvent;
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.event.InputEvent;
 import javax.swing.*;
 import javax.swing.text.StyledEditorKit;
 
@@ -90,7 +92,9 @@ class LaminaProText2 extends JPanel {
             estilo.add(elem_menu);
             if (par_estilo==1){
                 elem_menu.addActionListener(new StyledEditorKit.BoldAction());
+                elem_menu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
             } else if (par_estilo==2){
+                elem_menu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, InputEvent.CTRL_DOWN_MASK));
                 elem_menu.addActionListener(new StyledEditorKit.ItalicAction());
             }
         }/*else{

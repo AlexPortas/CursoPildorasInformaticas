@@ -81,6 +81,19 @@ class LaminaProText2 extends JPanel {
         opcion2.addActionListener(new StyledEditorKit.ItalicAction());
         menu.add(opcion2);
         textarea.setComponentPopupMenu(menu);
+        //------------------------------------------------- Video 112 ------------------------------------------------------------------------------------------------------------------------------
+        JToolBar barraEmer = new JToolBar();
+        JButton negritaB = new JButton(new ImageIcon("build/classes/graficos/img/cortar.png"));
+        JButton cursivaB = new JButton(new ImageIcon("build/classes/graficos/img/cortar.png"));
+        JButton subrayadoB = new JButton(new ImageIcon("build/classes/graficos/img/cortar.png"));
+        negritaB.addActionListener(new StyledEditorKit.BoldAction());
+        cursivaB.addActionListener(new StyledEditorKit.ItalicAction());
+        subrayadoB.addActionListener(new StyledEditorKit.UnderlineAction());
+        barraEmer.add(negritaB);
+        barraEmer.add(cursivaB);
+        barraEmer.add(subrayadoB);
+        barraEmer.setOrientation(1);
+        add(barraEmer, BorderLayout.WEST);
     }
     
     public void configurarMenu(String rotulo, String menu, String letra, int par_estilo, int par_tamanho, String rutaImg){

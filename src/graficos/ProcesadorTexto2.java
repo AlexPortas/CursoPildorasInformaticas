@@ -2,6 +2,7 @@ package graficos;
 
 import com.sun.glass.events.KeyEvent;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.InputEvent;
 import javax.swing.*;
@@ -81,17 +82,26 @@ class LaminaProText2 extends JPanel {
         opcion2.addActionListener(new StyledEditorKit.ItalicAction());
         menu.add(opcion2);
         textarea.setComponentPopupMenu(menu);
-        //------------------------------------------------- Video 112 ------------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------- Video 112 y 113 ------------------------------------------------------------------------------------------------------------------------------
         JToolBar barraEmer = new JToolBar();
-        JButton negritaB = new JButton(new ImageIcon("build/classes/graficos/img/cortar.png"));
-        JButton cursivaB = new JButton(new ImageIcon("build/classes/graficos/img/cortar.png"));
-        JButton subrayadoB = new JButton(new ImageIcon("build/classes/graficos/img/cortar.png"));
+        JButton negritaB = new JButton(new ImageIcon("build/classes/graficos/img/negrita.png"));
+        JButton cursivaB = new JButton(new ImageIcon("build/classes/graficos/img/cursiva.png"));
+        JButton subrayadoB = new JButton(new ImageIcon("build/classes/graficos/img/subra.png"));
+        JButton verdeB = new JButton(new ImageIcon("build/classes/graficos/img/verde.png"));
+        JButton rojoB = new JButton(new ImageIcon("build/classes/graficos/img/rojo.png"));
+        JButton azulB = new JButton(new ImageIcon("build/classes/graficos/img/azul.png"));
         negritaB.addActionListener(new StyledEditorKit.BoldAction());
         cursivaB.addActionListener(new StyledEditorKit.ItalicAction());
         subrayadoB.addActionListener(new StyledEditorKit.UnderlineAction());
+        verdeB.addActionListener(new StyledEditorKit.ForegroundAction("Verde", Color.green));
+        rojoB.addActionListener(new StyledEditorKit.ForegroundAction("Rojo", Color.red));
+        azulB.addActionListener(new StyledEditorKit.ForegroundAction("Azul", Color.blue));
         barraEmer.add(negritaB);
         barraEmer.add(cursivaB);
         barraEmer.add(subrayadoB);
+        barraEmer.add(verdeB);
+        barraEmer.add(rojoB);
+        barraEmer.add(azulB);
         barraEmer.setOrientation(1);
         add(barraEmer, BorderLayout.WEST);
     }
